@@ -36,17 +36,12 @@
         
             <p><?= $name ?></p>  
             <p><?= $age ?></p>
-            <a href="mailto:Good_man5@mail.ru"><?= $mail ?></a>
+            <a href=<?= $mail ?>><?= $mail ?></a>
             <p><?= $city ?></p>
             <p><?= $aboutys ?></p>
 
-           
-
-
-        
         
 			</div>
 
 </body>
-
 
