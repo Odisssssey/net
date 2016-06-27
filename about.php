@@ -32,22 +32,21 @@
         $city = 'Kostroma';
         $aboutys = 'student';
         
+         ?>
         
-        
-            echo "<p>$name</p>";
-            echo "<p>$age</p>";
-            echo "<p>$mail</p>";
-            echo "<p>$city</p>";
-            echo "<p>$aboutys</p>";
+            <p><?= $name ?></p>  
+            <p><?= $age ?></p>
+            <a href="mailto:Good_man5@mail.ru"><?= $mail ?></a>
+            <p><?= $city ?></p>
+            <p><?= $aboutys ?></p>
 
            
 
 
         
-        ?>
+        
 			</div>
 
 </body>
-</html>
 
 
