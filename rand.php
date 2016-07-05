@@ -2,7 +2,7 @@
   <head>
   </head>
   <body>
-  <h1>Угадай задуманное число за 30 секунд!</h1>
+  <h1>Выбери диапазон.</h1>
     <p>
       <?php
 		function random($min, $max)
@@ -29,6 +29,7 @@
 		}
 		
         ?>
+
      <form action="" method="post">
  <input type="textbox" requied name="min" placeholder="минимальное загаданное">
  <input type="textbox" requied name="max" placeholder="максимальное загаданное">
@@ -55,21 +56,25 @@
 		
 		?>
 	</p>
+<h1>Угадай задуманное число за 30 секунд!</h1>
+	<p>
 	 <form action="" method="post">
  <input type="textbox" requied name="rit" placeholder="ваше предположение">
  <input type="submit" name="submit1" placeholder="сменить предположение"> 
  </form>
-	<p>
+	
 	<?php
+	
 		if ($_POST['submit1'])
 		{
 		 $rit=$_POST['rit'];
 		}
 		
-		
-		$pos = sravnenie($n, $rit);
-         echo $pos;
-	    
+		if ($n == True){
+			$pos = sravnenie($n, $rit);
+			 echo $pos;
+	    }
+	
 		
 
       ?>
