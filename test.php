@@ -19,6 +19,13 @@ $file = mb_convert_encoding ($f ,"UTF-8" , "Windows-1251" );
 
 $arr = json_decode($file, true);
 var_dump($arr);
+
+if ($arr == null)
+	{
+	header('Location: http://university.netology.ru/u/tarutin/404.php', true);
+	echo "страница не найдена";
+	}
+
 $i = 0;
 echo "<hr/><br/>";
 foreach($arr as $k => $v)

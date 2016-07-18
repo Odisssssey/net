@@ -1,4 +1,11 @@
-﻿<?php
+<html>
+  <head>
+      <meta charset="utf-8">
+  </head>
+  <body>
+  
+    <p>
+<?php
 
 if ($_POST["tet"])
 	{
@@ -16,6 +23,8 @@ echo "<hr/><br/>";
 
 
 $s = 0;
+$z = 0;
+$test = 0;
 
 if ($_POST["submit"])
         {
@@ -30,14 +39,34 @@ if ($_POST["submit"])
             {
              
 				$s += 1;   
+				
 			 
             }
 			
 			}
 		}
-		
-		echo "Вы ответили на {$s} вопросов правильно из {$i}.";
-	
+		$pat = explode('/', $dir);
+		for($z=0; $z<count($pat); $z++)
+		   {
+			$test = $pat[6];			
+		   }
+		$pat = explode('.', $test);
+		for($z=0; $z<count($pat); $z++)
+			{
+			$test = $pat[0];			
+			}
+  
+echo 'Тест ' . "{$test}" . '.' . "<br/>";
+echo "Вы ответили на {$s} вопросов правильно из {$i}.";
 
-
+?>
+   <br/><br/>
+   <form action="action2.php" method="post">
+ <input type="textbox" requied name="fio" placeholder="Введите ваше ФИО.">
+ <input type="submit" name="submit" value="Пименить" > 
+ <input type=hidden name="test" value="<?= $test ?>">
+ </form>
 	
+	</p>
+	</body>
+	</html>
