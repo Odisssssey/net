@@ -65,6 +65,7 @@ echo "Вы ответили на {$s} вопросов правильно из {
  <input type="textbox" requied name="fio" placeholder="Введите ваше ФИО.">
  <input type="submit" name="submit" value="Пименить" > 
  <input type=hidden name="test" value="<?= $test ?>">
+ <input type=hidden name="sum" value="<?= $s ?>">
  </form>
 	
 	</p>
