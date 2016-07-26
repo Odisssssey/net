@@ -9,7 +9,7 @@
   <body>
   
     <p>
-<?php if (isset($_SESSION['isPassword']) || isset($_SESSION['islogin']) || isset($_SESSION['isGurst'])): ?>	
+<?php require "regist.php" ?>
 	
 <?php
 
@@ -18,7 +18,7 @@ if (!empty($_POST["tet"]))
 	$dir = "{$_POST['tet']}";
 
 	}else{
-	header('Location: http://university.netology.ru/u/tarutin/404.php', True);
+	header('Location: 404.php', True);
 	}
 	
 mb_internal_encoding("utf-8");
@@ -76,9 +76,6 @@ echo "Вы ответили на {$s} вопросов правильно из {
  <input type=hidden name="right" value="<?= $s ?>">
  </form>
  <?php endif; ?>
-<?php else: ?>
-	<?php header('Location: index.php'); ?>
-<?php endif; ?>
 
 	</p>
 	</body>
