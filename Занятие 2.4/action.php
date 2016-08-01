@@ -9,7 +9,7 @@
   <body>
   
     <p>
-<?php require "regist.php" ?>
+<?php require "isGuest.php" ?>
 	
 <?php
 
