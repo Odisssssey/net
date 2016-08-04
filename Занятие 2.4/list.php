@@ -9,7 +9,7 @@
   <body>
   
     <p>
-<?php require "isGuest.php" ?>
+<?php require_once("header.php"); ?>
 <?php
 $dir    = __DIR__."/files/";
 $files = scandir($dir);
