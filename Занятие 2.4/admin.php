@@ -1,5 +1,6 @@
 <?php
  session_start();
+ require_once("fanctions.php"); 
 ?>
 
 <html>
@@ -7,7 +8,13 @@
       <meta charset="utf-8">
   </head>
   <body>
-    <?php require "isAdmin.php" ?>
+    <?php 
+	if (isAdmin() == true){
+		require "header.php";
+		}else{
+		header('Location: 403.php', true); 
+	}
+	?>
 
 		<form enctype="multipart/form-data" action="actions.php" method="post">
 		<input type="file" name="fi" />
