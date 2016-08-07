@@ -27,7 +27,7 @@ while($str = fgetcsv($f))
 	}
 	$j++;
 }
-var_dump($data);
+//var_dump($data);
 
 
 foreach($data as $row)
