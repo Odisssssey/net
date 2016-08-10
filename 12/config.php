@@ -6,12 +6,12 @@ $pdo->exec("set names 'utf8'");
 if ((!empty($_GET['author'])) || (!empty($_GET['name'])) || (!empty($_GET['isbn'])))
 {
 	
-	$sql = "";
+	$sql = 'SELECT * FROM books WHERE ';
 	$i = 0;
 	if (!empty($_GET['author'])){
 		$sort = "'%".$_GET['author']."%'";
 		$plase = "author";
-		$sql .= 'SELECT * FROM books WHERE '.$plase.' LIKE '.$sort;
+		$sql .= $plase.' LIKE '.$sort;
 		$i++;
 	}
 	if (!empty($_GET['name'])){
@@ -20,17 +20,18 @@ if ((!empty($_GET['author'])) || (!empty($_GET['name'])) || (!empty($_GET['isbn'
 		if($i != 0){
 			$sql .= " AND " .$plase.' LIKE '.$sort;
 		}else{		
-		$sql .= 'SELECT * FROM books WHERE '.$plase.' LIKE '.$sort;
+		$sql .= $plase.' LIKE '.$sort;
 		}
 		$i++;
 	}
 	if (!empty($_GET['isbn'])){
+		if(is_numeric 
 		$sort = "'%".$_GET['isbn']."%'";
 		$plase = "isbn";
 		if($i != 0){
 			$sql .= " AND " .$plase.' LIKE '.$sort;
 		}else{
-		$sql .= 'SELECT * FROM books WHERE '.$plase.' LIKE '.$sort;
+		$sql .= $plase.' LIKE '.$sort;
 		}
 	}
 	
