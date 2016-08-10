@@ -52,6 +52,7 @@ if (!empty($_GET['isbn'])){
     <input type="text" name="isbn" placeholder="ISBN" value="<?= $isbn ?>" />
     <input type="text" name="name" placeholder="Название книги" value="<?= $name ?>" />
     <input type="text" name="author" placeholder="Автор книги" value="<?= $author ?>" />
+	<input type="button" value="Сбросить сортировку" class="btn" onclick="javascript:window.location='?isbn=&name=&author='"/>
     <input type="submit" value="Поиск" />
 </form>
 <br/>
