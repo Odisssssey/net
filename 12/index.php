@@ -23,18 +23,37 @@
     <p>
 
 <?php 
-
-
 require_once("config.php");
-
-/*foreach ($pdo->query($sql) as $row)
-{
-	print_r($row);
-}*/
 ?>
 
-<hr/><br/>
+
 <h1>Библиотека успешного человека</h1>
+<br/>
+
+<?php 
+if (!empty($_GET['author'])){
+	$author = $_GET['author'];
+}else{
+	$author = "";
+	}
+if (!empty($_GET['name'])){
+	$name = $_GET['name'];
+}else{
+	$name = "";
+}
+if (!empty($_GET['isbn'])){
+	$isbn = $_GET['isbn'];
+}else{
+	$isbn = "";
+	}
+?>
+
+<form method="GET">
+    <input type="text" name="isbn" placeholder="ISBN" value="<?= $isbn ?>" />
+    <input type="text" name="name" placeholder="Название книги" value="<?= $name ?>" />
+    <input type="text" name="author" placeholder="Автор книги" value="<?= $author ?>" />
+    <input type="submit" value="Поиск" />
+</form>
 <br/>
 <table>
 
@@ -55,7 +74,7 @@ foreach ($pdo->query($sql) as $row)
 		if($i == 4)
 		{
 			echo "<td>".$row[5]."</td>";
-			echo "<td>".$row[4]."</td><br/>";
+			echo "<td>".$row[4]."</td>";
 			break;
 		}
 		echo "<td>".$row[$i]."</td>";
