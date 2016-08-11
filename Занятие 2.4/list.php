@@ -23,8 +23,8 @@ foreach($files as $k => $v)
 			
 			<tr><td><a href='test.php?tet=<?= "{$v}" ?>'><?= "{$v}" ?></a></td>
 			<?php if (isset($_SESSION['isPassword']) || isset($_SESSION['islogin'])): ?>
-			<td><a href='delete.php?tet=<?= "{$v}" ?>'> удалить</a></td></tr>
-			<br/>
+			<td><a href='delete.php?tet=<?= "{$v}" ?>'> удалить</a></td>
+			
 			<?php endif; ?>
 			<?php }
 		

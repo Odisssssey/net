@@ -1,12 +1,15 @@
 [
 	{
 		"id":1,
-		"ADMIN_LOGIN":"admin",
-		"ADMIN_PASS":"pass"
+		"LOGIN":"admin",
+		"PASS":"password",
+		"IS_ADMIN": false
+		
 	},
 	{
 		"id":2,
 		"LOGIN":"tre",
-		"PASS":"tre"
+		"PASS":"tre",
+		"IS_ADMIN": true
 	}
 ]

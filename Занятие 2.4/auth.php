@@ -16,9 +16,21 @@ if(isset($userData['password']))
 	$arr = json_decode($file, true);
 	var_dump($arr);
 	
-	for ($i=0; isset($arr["{$i}"]["ADMIN_LOGIN"]); $i++)
+	for ($i=0; isset($arr["{$i}"]["LOGIN"]); $i++)
 		{
-		if ($userData['login'] == $arr["{$i}"]["ADMIN_LOGIN"] && $userData['password'] == $arr["{$i}"]["ADMIN_PASS"])
+			if ($userData['login'] == $arr["{$i}"]["LOGIN"] && $userData['password'] == $arr["{$i}"]["PASS"])
+			{
+			 $_SESSION['isPassword'] = True;
+			 $_SESSION['login'] = $userData['login'];
+			}
+			if (!empty($arr["{$i}"]["IS_ADMIN"])){
+				$_SESSION['islogin'] = True;
+			}
+		}
+	
+	/**for ($i=0; isset($arr["{$i}"]["IS_ADMIN"]); $i++)
+		{
+		if ($userData['login'] == $arr["{$i}"]["IS_ADMIN"] && $userData['password'] == $arr["{$i}"]["ADMIN_PASS"])
 			{
 			$_SESSION['islogin'] = True;
 			$_SESSION['login'] = $userData['login'];
@@ -34,7 +46,7 @@ if(isset($userData['password']))
 	         $_SESSION['login'] = $userData['login']; 
 			}
 			
-		}
+		}*/
 	
 	
 	
