@@ -15,18 +15,7 @@ if (isset($_POST['save'])){
 		}
 		$sth->execute();
 	}
-	/**if (!empty($_POST['description'])){ 
-		$description = htmlspecialchars($_POST['description']);
-		$post = "'".$description."'"; 
-		if(!empty($_POST['id'])){
-			$id = $_POST['id'];
-			$sql = 'UPDATE tasks SET description = '.$post.' WHERE id = '.$id;
-		}else{
-			$sql = 'INSERT INTO tasks (description, date_added) VALUES('.$post.', CURRENT_TIMESTAMP)';
-			//echo $sql;
-		}
-		$pdo->query($sql);
-	}*/
+
 }
 if (!empty($_GET['delete'])){
 	$sth=$pdo->prepare("DELETE FROM tasks WHERE id =:id"); 
@@ -40,8 +29,5 @@ if (!empty($_GET['perform'])){
 	$sth->execute();
 }
 
-/**$sth=$pdo->prepare("UPDATE `users` SET user=:var"); 
-$sth->bindParam(":var",$var); 
-$sth->execute(); */
 
 header('Location: index.php'); 
