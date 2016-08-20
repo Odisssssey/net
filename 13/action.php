@@ -1,6 +1,8 @@
+<?php 
+require_once("model.php");
+?>
+
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-$pdo->exec("set names 'utf8'");
 if (isset($_POST['save'])){
 
 	if (!empty($_POST['description'])){

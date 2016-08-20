@@ -1,6 +1,12 @@
+<?php 
+require_once("db.php");
+?>
 <?php
 
+$host = "mysql:host=localhost;dbname=tarutin";
+$name = "tarutin";
+$pass = "neto0402";
 
- $pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
- $pdo->exec("set names 'utf8'");
+$pdo = database($host, $name, $pass);
+
 
