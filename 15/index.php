@@ -25,7 +25,10 @@
 <body>
 
 <?php 
-require_once("config.php");
+require_once("model.php");
+?>
+<?php 
+require_once("sql.php");
 ?>
 
 <h1>Информация о полях таблиц базы данных:</h1>
@@ -35,13 +38,9 @@ require_once("config.php");
         <label for="table">Выберите таблицу:</label>
         <select name="table">
                             <?php
-				
-								$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-								$pdo->exec("set names 'utf8'");
-
-								$sql_vibor = 'SHOW TABLES FROM tarutin';
-								$smt = $pdo->prepare($sql_vibor);
-								$smt->execute();
+												
+								$smt = sqlVibor();
+																
 								while ($rom = $smt->fetch(PDO::FETCH_NUM)) 
 								{ 
 								?>
@@ -56,26 +55,46 @@ require_once("config.php");
     <tr>
         <th>Поле</th>
         <th>Тип</th>
+		<th>Действие</th>
     </tr>
 
 <?php
+
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_NUM)) 
 {
-//print_r($row);
 	echo "<tr>";
 	echo "<td>".$row[0]."</td>";
 	echo "<td>".$row[1]."</td>";
-	echo "</tr>";
-	
+	?>
+	<td><form action="action.php" method="POST">
+				<input type="submit" name="delete" value="Удалить" />
+				<input type=hidden name="id" value="<?=$row[0]?>">
+				</form></td>
+	</tr>
+<?php 	
 }
-
 ?>
+	<tr>
+	<td><form action="action.php" method="POST">
+	<input type="text" name="pole" placeholder="Название поля" value="" />
+		</td>
+		
+	<td>
+        <select name="tupe">
+                            
+			<option value="int">int</option>
+			<option value="text">text</option>
+							
+        </select>
+	</td>
+	
+	<td><input type="submit" name="save" value="Добавить" /></form></td>
+	</tr>
 
-
-
-
+   
+</table>
 </body>
 </html>
 
