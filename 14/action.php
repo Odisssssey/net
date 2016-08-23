@@ -1,35 +1,42 @@
 <?php
  session_start();
 ?>
+<?php 
+require_once("model.php");
+?>
 <?php
-$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-$pdo->exec("set names 'utf8'");
-$task = 'task';
 if (isset($_POST['save'])){
 
-	if (!empty($_POST['description'])){ 
-
-		$post = "'".$_POST['description']."'"; 
+	if (!empty($_POST['description'])){
+		$description = htmlspecialchars($_POST['description']);
 		if(!empty($_POST['id'])){
-			$id = $_POST['id'];
-			$sql = 'UPDATE '.$task.' SET description = '.$post.' WHERE id = '.$id;
+			$sqlSet = sqlReSet($description, $_POST['id']);
+			//$sth=$pdo->prepare("UPDATE task SET description =:description WHERE id =:id");
+			//$sth->bindParam(":description",$description);
+			//$sth->bindParam(":id",$_POST['id']);
 		}else{
-			$sql = 'INSERT INTO '.$task.' (user_id, description, date_added) VALUES('.$_SESSION['id'].','.$post.', CURRENT_TIMESTAMP)';
-			echo $sql;
+			$sqlSet = sqlSet($description);
+			//$sth=$pdo->prepare("INSERT INTO task (user_id, description, date_added) VALUES(:user_id, :description, CURRENT_TIMESTAMP)");
+			//$sth->bindParam(":description",$description);
+			//$sth->bindParam(":user_id",$_SESSION['id']);
 		}
-		$pdo->query($sql);
+		$sqlSet->execute();
 	}
 }
 if (!empty($_GET['delete'])){
-	$GET = $_GET['id'];	
-	$sql = 'DELETE FROM '.$task.' WHERE id = '.$GET;
-	$pdo->query($sql);
+	$sqlDel = delete($_GET['id']);
+	//$sth=$pdo->prepare("DELETE FROM task WHERE id =:id"); 
+	//$sth->bindParam(":id",$_GET['id']);
+	$sqlDel->execute();
 }
 
 if (!empty($_GET['perform'])){
-	$GET = $_GET['id'];
-	$sql = 'UPDATE '.$task.' SET is_done = 1 WHERE id = '.$GET;
-	$pdo->query($sql);
+	$sqlPer = perform($_GET['id']);
+	//$sth=$pdo->prepare("UPDATE task SET is_done=1 WHERE id =:id"); 
+	//$sth->bindParam(":id",$_GET['id']);
+	$sqlPer->execute();
 }
 
 header('Location: index.php'); 
+
+

@@ -23,7 +23,8 @@
 			 <input id="login" name="User[login]" />
 			 <label for="password" >Пароль</label>
 			 <input type="password" id="password" name="User[password]" />
-			 <input type="submit" value="Войти">
+			 <input type="submit" name="login" value="Войти">
+			<input type="submit" name="reg" value="Зарегистрироваться">
 			</form>
     <?php endif; ?>
 	

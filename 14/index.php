@@ -33,20 +33,9 @@ require_once("header.php");
 ?>
  
 <?php 
-require_once("config.php");
+require_once("model.php");
 ?>
 
-<?php
-
-foreach ($pdo->query($sql) as $row)
-{
-	
-		print_r($row);
-	
-}
-echo "<hr/><br/>";
-
-?>
 <p>
 <h1>Список дел на вчера</h1>
 <div style="float: left">
@@ -79,13 +68,13 @@ echo "<hr/><br/>";
     </tr>
 	
 <?php
-
-
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-while ($row = $stmt->fetch(PDO::FETCH_NUM)) 
+if (!empty($_POST['sort_by'])){
+		$sqlSort = sqlSort($_POST['sort_by']);
+	}else{
+		$sqlSort = sqlBase();
+	}
+while ($row = $sqlSort->fetch(PDO::FETCH_NUM)) 
 {
-//print_r($row);
 	echo "<tr>";
 	echo "<td>".$row[3]."</td>";
 	echo "<td>".$row[5]."</td>";
@@ -102,14 +91,8 @@ while ($row = $stmt->fetch(PDO::FETCH_NUM))
 	<?php
 	if(!empty($row[2])){
 		echo "<td>";
-		
-		$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-		$pdo->exec("set names 'utf8'");
-
-		$sql_polz = 'SELECT * FROM logs';
-		$smt = $pdo->prepare($sql_polz);
-		$smt->execute();
-		while ($rom = $smt->fetch(PDO::FETCH_NUM)) 
+		$sql = sqlLogs();
+		while ($rom = $sql->fetch(PDO::FETCH_NUM)) 
 		{ 
 		if($rom[0] == $row[2]) echo $rom[1];
 		}
@@ -122,13 +105,8 @@ while ($row = $stmt->fetch(PDO::FETCH_NUM))
 				<select name="make_for">
 				<?php
 				
-				$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-				$pdo->exec("set names 'utf8'");
-
-				$sql_polz = 'SELECT * FROM logs';
-				$smt = $pdo->prepare($sql_polz);
-				$smt->execute();
-				while ($rom = $smt->fetch(PDO::FETCH_NUM)) 
+				$sql = sqlLogs();
+				while ($rom = $sql->fetch(PDO::FETCH_NUM)) 
 				{ 
 					if($rom[0] != $_SESSION['id']){?>
 				<option value="<?= $rom[0] ?>"><?= $rom[1] ?></option>

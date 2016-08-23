@@ -37,10 +37,15 @@
 
 <?php
 
+require_once("model.php");
 
-$stmt = $pdo->prepare($sql_treb);
-$stmt->execute();
-while ($rot = $stmt->fetch(PDO::FETCH_NUM)) 
+if (!empty($_POST['sort_by'])){
+		$sqlTreb = sqlTrebSort($_POST['sort_by']);
+	}else{
+		$sqlTreb = sqlTrebBase();
+	}
+	
+while ($rot = $sqlTreb->fetch(PDO::FETCH_NUM)) 
 {
 //print_r($rot);
 	echo "<tr>";
@@ -57,13 +62,8 @@ while ($rot = $stmt->fetch(PDO::FETCH_NUM))
 	if(!empty($rot[2])){
 		echo "<td>";
 		
-		$pdo = new PDO("mysql:host=localhost;dbname=tarutin", "tarutin", "neto0402");
-		$pdo->exec("set names 'utf8'");
-
-		$sql_polz = 'SELECT * FROM logs';
-		$smt = $pdo->prepare($sql_polz);
-		$smt->execute();
-		while ($rom = $smt->fetch(PDO::FETCH_NUM)) 
+		$sql = sqlLogs();
+		while ($rom = $sql->fetch(PDO::FETCH_NUM)) 
 		{ 
 		if($rom[0] == $rot[1]) echo $rom[1];
 		}

@@ -9,5 +9,5 @@ $sql = 'INSERT INTO logs (LOGIN, PASS) VALUES('."'".$_GET['login']."'".', '."'".
 $pdo->query($sql);
 echo $sql;
 unset($_SESSION['dostop']);
-//$_SESSION['dost'] = 7;
-header('Location: auth.php');
+$_SESSION['error'] = "Вы зарегистрированы";
+header('Location: index.php');
