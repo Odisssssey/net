@@ -101,8 +101,8 @@ while ($row = $sqlSort->fetch(PDO::FETCH_NUM))
 		echo "<td>"."Вы"."</td>";
 	}
 	?>
-		<td><form action="actionz.php" method="POST">
-				<select name="make_for">
+		<td><form action="action.php" method="POST">
+				<select name="makeFor">
 				<?php
 				
 				$sql = sqlLogs();

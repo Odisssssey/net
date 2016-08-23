@@ -73,31 +73,12 @@ function perform($id){
 	return $sth;
 }
 
-
-
-/**if (!empty($_SESSION['id'])){
-	if (!empty($_POST['sort_by'])){
-//		$sql=$pdo->prepare('SELECT * FROM task WHERE user_id=:id ORDER BY :sort_by ASC');
-//		$sql->bindParam(":id",$_SESSION['id']);
-//		$sql->bindParam(":sort_by",$_POST['sort_by']);
-//		$sql_treb=$pdo->prepare('SELECT * FROM task WHERE assigned_user_id=:id ORDER BY :sort_by ASC');
-//		$sql_treb->bindParam(":id",$_SESSION['id']);
-//		$sql_treb->bindParam(":sort_by",$_POST['sort_by']);
-		echo "1";
-	}else{
-		
-//		$sql=$pdo->prepare('SELECT * FROM task WHERE user_id= :id');
-//		$sql->bindParam(":id",$_SESSION['id']);
-//		$sql_treb=$pdo->prepare('SELECT * FROM task WHERE assigned_user_id=:id');
-//		$sql_treb->bindParam(":id",$_SESSION['id']);
-//		$sql_polz=$pdo->prepare('SELECT * FROM logs');
-//		$sql_polz->execute();
-		echo "2";
-	}
-	$sql_treb->execute();
-}
-if (!empty($_POST['User'])){
-	$sql=$pdo->prepare('SELECT * FROM logs');
+function makeFor($for, $id){
+	$pdo = connect();
+	$sql =$pdo->prepare('UPDATE task SET assigned_user_id =:for WHERE id =:id');
+	$sql->bindParam(":for",$for);
+	$sql->bindParam(":id",$id);
+	return $sql;
 }
 
-$sql->execute();*/
+
