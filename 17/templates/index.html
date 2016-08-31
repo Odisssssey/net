@@ -1,0 +1,46 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+	   	   <style>
+    table { 
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    table td, table th {
+        border: 1px solid #ccc;
+        padding: 5px;
+		max-width: 200px;
+		white-space: pre-line;
+    }
+    
+    table th {
+        background: #eee;
+    }
+    
+    form {
+        margin: 0;
+    }
+			</style>
+  </head>
+<body>
+<h1>{{ name }}</h1>
+<table>
+    <tr>
+        <th>{{mesage1}}</th>
+        <th>{{mesage2}}</th>
+		<th>{{mesage3}}</th>
+    </tr>
+	{% for var in var %}
+		<tr>
+			<td>{{ var.3 }}</td>
+			<td>{{ var.2 }}</td>
+			<td>{{ var.1 }}</td>
+		</tr>
+	{% endfor %}
+	<td style='white-space: nowrap;' colspan='3'>
+	  {% include "create.html" %}
+	</td>
+</table>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "yandex/geo": "^1.1",
+        "monolog/monolog": "^1.21",
+        "twig/twig": "^1.24"
+    }
+}
