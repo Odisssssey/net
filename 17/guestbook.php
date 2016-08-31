@@ -1,16 +1,15 @@
 <?php
-
+require_once("config.php");
 
 class Guestbook
 {
 	public function __construct()
 	{
-		require_once("config.php");
+		
 	}
 	
 	public function last()
     {
-        require_once("config.php");
 		$pdo = connect();
 		$sql=$pdo->prepare('SELECT * FROM guestbook ORDER BY crdate DESC LIMIT 20');
 		$sql->execute();

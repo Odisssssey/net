@@ -24,12 +24,12 @@
 			</style>
   </head>
 <body>
-<h1>{{ name }}</h1>
+<h1>Гостевая книга</h1>
 <table>
     <tr>
-        <th>{{mesage1}}</th>
-        <th>{{mesage2}}</th>
-		<th>{{mesage3}}</th>
+        <th>Сообщение</th>
+        <th>От кого</th>
+		<th>Дата</th>
     </tr>
 	{% for var in var %}
 		<tr>
@@ -39,7 +39,7 @@
 		</tr>
 	{% endfor %}
 	<td style='white-space: nowrap;' colspan='3'>
-	  {% include "create.html" %}
+	  <a href='create.php'>оставить сообщение</a>
 	</td>
 </table>
 </body>

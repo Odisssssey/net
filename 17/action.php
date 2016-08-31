@@ -28,6 +28,6 @@ if (empty($_SESSION['error']))
 	header('Location: index.php'); 
 }else{
 
-	header('Location: index.php'); 
+	header('Location: create.php'); 
 
 }
