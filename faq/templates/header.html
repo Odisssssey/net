@@ -1,0 +1,17 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+  </head>
+  <body>
+  
+<a>Ваше имя: </a><a>{{ name }}</a><a> | </a><a href='exit.php'>Выйти</a>
+
+{% if isAdmin == true %}
+    <a> | </a><a href='adminka.php'> Войти в админку</a>
+	<a> | </a><a href='index.php'> Посмотреть вопросник</a>
+	<a> | </a><a href='./controller/bot.php'> Проверить телеграм</a>
+{% endif %}
+
+<hr/><br/>
+ </body>
+</html>
