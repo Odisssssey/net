@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 
 class Temi {
 
@@ -17,19 +17,19 @@ class Temi {
 	}
 	
 	public function viborKategorii(){
-	
-		$viborKategorii = sqldistinct();
+		$question = new Question;
+		$viborKategorii = $question->sqldistinct();
 		while ($tema = $viborKategorii->fetch(PDO::FETCH_NUM)) 
 		{
 			echo "<tr>";
 			$f = $tema[0];
 			echo "<td>".$tema[0]."</td>";
-			$qlCount = sqlCount($f);
+			$qlCount = $question->sqlCount($f);
 			while ($count = $qlCount->fetch(PDO::FETCH_NUM)){
 			echo "<td>".$count[0]."</td>";
 			$description = $count[0];
 			}
-			$countAnswer = sqlCountAnswer($tema[0]);
+			$countAnswer = $question->sqlCountAnswer($tema[0]);
 			while ($answer = $countAnswer->fetch(PDO::FETCH_NUM)){
 			echo "<td>".$answer[0]."</td>";
 			$answers = $answer[0];
@@ -44,5 +44,3 @@ class Temi {
 	}
 
 }
-
-
