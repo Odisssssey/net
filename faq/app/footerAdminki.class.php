@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 
 class FooterAdminki {
 
@@ -15,7 +15,8 @@ class FooterAdminki {
 	}
 	
 	public function vigruzIzbazi(){
-		$qestionAdmin = baseQestionAdmin($_SESSION['idForFooter']);
+		$question = new Question;
+		$qestionAdmin = $question->baseQestionAdmin($_SESSION['idForFooter']);
 		while ($qestion= $qestionAdmin->fetch(PDO::FETCH_NUM)) 
 		{
 			
@@ -41,7 +42,3 @@ EOT;
 	
 	
 }
-	
-
-
-
