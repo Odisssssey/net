@@ -38,7 +38,6 @@ function sqlBase()
 {
 	$pdo = connect();
 	$sqlBas=$pdo->prepare('SELECT * FROM question');
-	//$sqlBas->bindParam(":id",$_SESSION['id']);
 	$sqlBas->execute();
 	return $sqlBas;
 }
@@ -62,7 +61,6 @@ function sqlBaseNotAnswer()
 {
 	$pdo = connect();
 	$sqlBas=$pdo->prepare('SELECT * FROM question WHERE answer IS NULL');
-	//$sqlBas->bindParam(":category",$category);
 	$sqlBas->execute();
 	return $sqlBas;
 }
@@ -77,7 +75,6 @@ function sqlBaseCategory($category)
 function sqlCountAnswer($category)
 {
 	$pdo = connect();
-	//$sqlBas=$pdo->prepare('SELECT COUNT(category) FROM question WHERE category=:category');
 	$sqlBas=$pdo->prepare('SELECT COUNT(answer) FROM question WHERE category =:category');
 	$sqlBas->bindParam(":category",$category);
 	$sqlBas->execute();
@@ -86,30 +83,11 @@ function sqlCountAnswer($category)
 function sqlCount($category)
 {
 	$pdo = connect();
-	//$sqlBas=$pdo->prepare('SELECT COUNT(category) FROM question WHERE category=:category');
 	$sqlBas=$pdo->prepare('SELECT COUNT(category) FROM question WHERE category =:category');
 	$sqlBas->bindParam(":category",$category);
-	//$sqlBas->bindParam(":column",$column);
 	$sqlBas->execute();
 	return $sqlBas;
 }
-/*function sqlTrebSort($sort_by)
-{
-	$pdo = connect();
-	$sqlTreb=$pdo->prepare('SELECT * FROM task WHERE assigned_user_id=:id ORDER BY :sort_by ASC');
-	$sqlTreb->bindParam(":id",$_SESSION['id']);
-	$sqlTreb->bindParam(":sort_by",$sort_by);
-	$sqlTreb->execute();
-	return $sqlTreb;
-}
-function sqlTrebBase()
-{	
-	$pdo = connect();
-	$sqlTreb=$pdo->prepare('SELECT * FROM task WHERE assigned_user_id=:id');
-	$sqlTreb->bindParam(":id",$_SESSION['id']);
-	$sqlTreb->execute();
-	return $sqlTreb;
-}*/
 function sqlReSetPassword($id, $password){
 	$pdo = connect();
 	$sth=$pdo->prepare("UPDATE user SET password =:password WHERE id =:id");
@@ -141,13 +119,14 @@ function sqlSetAdmin($id){
 }
 function sqlSaveQuestion($text, $ban, $banWord){
 	$pdo = connect();
-	$sth=$pdo->prepare("INSERT INTO question (category, description, name, mail, date, ban, banWord) VALUES(:category, :description, :name, :mail, CURRENT_TIMESTAMP, :ban, :banWord)");
+	$sth=$pdo->prepare("INSERT INTO question (category, description, name, mail, date, ban, banWord, update_id) VALUES(:category, :description, :name, :mail, CURRENT_TIMESTAMP, :ban, :banWord, :update_id)");
 	$sth->bindParam(":category",$text['theme']);
 	$sth->bindParam(":description",$text['mesage']);
 	$sth->bindParam(":name",$text['name']);
 	$sth->bindParam(":mail",$text['mail']);
 	$sth->bindParam(":ban",$ban);
 	$sth->bindParam(":banWord",$banWord);
+	$sth->bindParam(":update_id",$text['update_id']);
 	$sth->execute();
 	return $sth;
 }
@@ -180,4 +159,3 @@ function sqlSetQuestion($id){
 	$sql->execute();
 	return $sql;
 }
-
