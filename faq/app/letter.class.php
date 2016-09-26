@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../model/model.php");
+require_once("../model/modificate.class.php");
 require_once("../model/modelForBan.php");
 
 class Letter{
@@ -14,9 +14,11 @@ class Letter{
 		if (empty($_SESSION['errorVopros']))
 		{
 			if ($this->proverka($text) == true){
-				$saveQuestion = sqlSaveQuestion($text, "1", $ban);
+				$modificate = new Modificate;
+				$saveQuestion = $modificate->sqlSaveQuestion($text, "1", $ban);
 			}else{
-				$saveQuestion = sqlSaveQuestion($text);
+				$modificate = new Modificate;
+				$saveQuestion = $modificate->sqlSaveQuestion($text);
 			}
 			unset($_SESSION['text']);
 		}
@@ -71,22 +73,24 @@ class Letter{
 	}
 	
 	public function delQuestion($id){
-		$question = delQuestion($id);	
+		$modificate = new Modificate;
+		$question = $modificatte->delQuestion($id);	
 	}
 	
 	
 	public function sqlChengeQuestion($id){
-	
-		$chengeQuestion = sqlChengeQuestion($id);
+		$modificate = new Modificate;
+		$chengeQuestion = $modificate->sqlChengeQuestion($id);
 	}
 	
 	public function sqlSetQuestion($id){
-		$chengeQuestion = sqlSetQuestion($_POST['id']);	
+		$modificate = new Modificate;
+		$chengeQuestion = $modificate->sqlSetQuestion($_POST['id']);	
 	}
 	
 	public function setQuestionInAdmin($variable, $name, $id){
-	
-		$setQuestionInAdmin = sqlSetQuestionInAdmin($variable, $name, $id);
+		$modificate = new Modificate;
+		$setQuestionInAdmin = $modificate->sqlSetQuestionInAdmin($variable, $name, $id);
 		if(!empty($_POST['ban'])){
 			$noBan = sqlNoBan($_POST['id']);
 		}
@@ -112,13 +116,14 @@ class Letter{
 	}
 	
 	public function delTema($category){
-	
-	$del = delete($category);
+		$modificate = new Modificate;
+		$del = $modificate->delete($category);
 	
 	}
 	
 	public function noBan($id){
-		$noBan = sqlNoBan($_POST['id']);
+		$modificate = new Modificate;
+		$noBan = $modificate->sqlNoBan($_POST['id']);
 	}
 
 }
