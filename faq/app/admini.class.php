@@ -20,7 +20,7 @@ class Admini {
 		echo"</form>";
 		
 	}
-	///porol///
+
 	public function poleParola(){
 	
 		$s = <<<EOT
@@ -33,7 +33,7 @@ EOT;
 		return $_GET['description'];
 		}
 	}
-	///skritoe///
+
 	public function skritoepole(){
 		$s= <<<EOT
 		<input type=hidden name="id" value="{$this->provercaSkritogoPola()}">
@@ -45,15 +45,15 @@ EOT;
 		return $_GET['id'];
 		}
 	}
-	///knopca///
+
 	public function knopcaParola(){
 		$s= <<<EOT
 		<input type="submit" name="save" value="Изменить" />
 EOT;
 		echo $s;
 	}
+
 	
-	///tabliza///
 	public function tabliza(){
 		echo"<table><tr><th>логин</th><th>пароль</th><th>админ</th><th></th><th></th></tr>";
 		$this->formirovanieTablizi();
@@ -77,5 +77,4 @@ EOT;
 	}
 
 }
-
 
