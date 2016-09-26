@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 
 class Admini {
 
@@ -61,8 +61,8 @@ EOT;
 	}
 	
 	public function formirovanieTablizi(){
-	
-	$admins = sqlLogs();
+	$question = new Question;
+	$admins = $question->sqlLogs();
 	while ($row = $admins->fetch(PDO::FETCH_NUM)) 
 	{
 			echo "<tr>";
@@ -77,4 +77,5 @@ EOT;
 	}
 
 }
+
 
