@@ -95,11 +95,3 @@ class User {
 	
 }
 
-/*$vhod = 'регистрация';
-$password = 'poi';
-$login = 'poi';
-$ivan = new User($vhod, $password, $login);
-if(isset($ivan->isAdmin)){
-	echo $ivan->login;
-	}else{echo "not";}
-*/	
