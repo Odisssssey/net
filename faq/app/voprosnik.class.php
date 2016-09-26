@@ -1,13 +1,15 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
+
+
 
 class Voprosnik {
 
 
 	public function activ(){
 
-	
-		$viborKategorii = sqldistinct();
+		$question = new Question;
+		$viborKategorii = $question->sqldistinct();
 		while ($vibor = $viborKategorii->fetch(PDO::FETCH_NUM)) 
 		{
 			echo "<h3>".$vibor[0]."</h3>";
@@ -25,7 +27,8 @@ class Voprosnik {
 	}
 
 	public static function qvestion($vibor){
-		$sqlSort = sqlSort($vibor);
+		$question = new Question;
+		$sqlSort = $question->sqlSort($vibor);
 		while ($row = $sqlSort->fetch(PDO::FETCH_NUM)) 
 		{
 			echo "<tr>";
