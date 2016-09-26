@@ -5,6 +5,7 @@ require_once("./app/admini.class.php" );
 require_once("./app/temi.class.php" );
 require_once("./app/voprosi.class.php" );
 require_once("./app/banList.class.php" );
+require_once("./app/telegram.class.php" );
 require __DIR__.'/vendor/autoload.php';
 require_once("header.php");
 ?>
@@ -14,7 +15,6 @@ $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader);
 
 $template = $twig->loadTemplate('adminka.html');
-//$var = Guestbook::last();
 $isAdmin = Admission::isAdmin();
 
 
@@ -43,6 +43,10 @@ if ($isAdmin == true){
 				$_SESSION['title'] = "banList";
 				$title = "Cтоп лист";
 			}
+			if($_GET['title'] == "telegram"){
+				$_SESSION['title'] = "telegram";
+				$title = "Телеграм";
+			}
 			
 		}else{
 			if ($_SESSION['title'] == "admini"){
@@ -56,6 +60,9 @@ if ($isAdmin == true){
 			}
 			if($_SESSION['title'] == "banList"){
 				$title = "Cтоп лист";
+			}
+			if($_SESSION['title'] == "telegram"){
+				$title = "Телеграм";
 			}
 		
 		}
@@ -78,6 +85,9 @@ echo $template->render(array(
 	}
 	if($_SESSION['title'] == "banList"){
 	$ban = new Ban;
+	}
+	if($_SESSION['title'] == "telegram"){
+	$telegram = new Telegram;
 	}
 
 	if(!empty($_POST['chengeFooter'])){
