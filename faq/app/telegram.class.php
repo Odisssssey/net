@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 
 class Telegram {
 
@@ -82,8 +82,9 @@ EOT;
 	}
 	
 	public function proverkaImeushihsa($update){
-		$question = sqlQuestion() ;
-		while ($row = $question->fetch(PDO::FETCH_NUM)) 
+		$question = new Question;
+		$questions = $question->sqlQuestion() ;
+		while ($row = $questions->fetch(PDO::FETCH_NUM)) 
 		{
 			if(!empty($row[10])){
 				if($update == $row[10]){
