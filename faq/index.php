@@ -18,7 +18,7 @@ echo $templates->render(array(
 
 require_once("./app/voprosnik.class.php"); 
 
-//$var = Voprosnik::activ();
+
 $viborKategorii = Voprosnik::activ();
 
 
