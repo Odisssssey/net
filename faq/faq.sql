@@ -15,6 +15,7 @@ CREATE TABLE `question` (
   `date` datetime NOT NULL,
   `ban` int(1) DEFAULT NULL,
   `banWord` text NOT NULL,
+  `update_id` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
