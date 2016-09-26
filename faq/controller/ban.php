@@ -13,7 +13,6 @@ if (!empty($_POST['save'])){
 	$use = " добавил исключение ".$_POST['description'];
 }
 
-///запись///
 $d = getdate();
 
 $file = fopen('../User_can.txt', 'a+');
