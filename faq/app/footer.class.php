@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 
 
 class Footer {
@@ -28,7 +28,6 @@ class Footer {
 		
 	}
 	
-	///pole vvoda///
 	
 	public function polevvoda($placeholder, $variable){
 		$s = <<<EOT
@@ -49,7 +48,6 @@ EOT;
 		return $_SESSION['text']["{$variable}"]; 
 		}
 	}
-	///select///
 	
 	public function select(){
 		echo "<select name='text[theme]'>";
@@ -71,7 +69,8 @@ EOT;
 	}
 	
 	public function viborThemi(){
-		$viborThemi = sqldistinct();
+		$question = new Question;
+		$viborThemi = $question->sqldistinct();
 		while ($viborThem = $viborThemi->fetch(PDO::FETCH_NUM))		
 		{
 			$s = <<<EOT
