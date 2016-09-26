@@ -2,7 +2,6 @@
 session_start();
 require_once("../model/model.php");
 require_once("../model/modelForBan.php");
-require_once("header.php");
 
 class Letter{
 
