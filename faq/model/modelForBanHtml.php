@@ -17,7 +17,3 @@ function delBanWord($id){
 	$sth->execute();
 	return $sth;
 }
-
-
-
-
