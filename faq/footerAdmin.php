@@ -9,7 +9,6 @@ $twig = new Twig_Environment($loader);
 $templatef = $twig->loadTemplate('footerAdmin.html');
 
 
-
 $var = 0;
 
 echo $templatef->render(array(
