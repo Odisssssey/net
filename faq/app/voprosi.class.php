@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/modelForHtml.php");
+require_once("./model/question.class.php");
 require_once("./model/modelForBanHtml.php");
 
 class Voprosi {
@@ -58,8 +58,8 @@ EOT;
 	}
 	
 	public function sozdanieOpzii(){
-	
-		$viborThemi = sqldistinct();
+		$question = new Question;
+		$viborThemi = $question->sqldistinct();
 		while ($viborThem = $viborThemi->fetch(PDO::FETCH_NUM)) 
 		{
 			$this->opzii($viborThem[0]);
@@ -93,13 +93,16 @@ EOT;
 	public function zapolnenieTablizi(){
 	
 		if(($_POST['category'] != "noAnswer") || ($_POST['category'] != "inBan")){
-			$baseCategory = sqlBaseCategory($_POST['category']);
+			$question = new Question;
+			$baseCategory = $question->sqlBaseCategory($_POST['category']);
 		}
 		if($_POST['category'] == "inBan"){
-			$baseCategory = sqlBaseInBan();
+			$question = new Question;
+			$baseCategory = $question->sqlBaseInBan();
 		}
 		if($_POST['category'] == "noAnswer"){
-			$baseCategory = sqlBaseNotAnswer();
+			$question = new Question;
+			$baseCategory = $question->sqlBaseNotAnswer();
 		}
 			
 		
@@ -151,5 +154,3 @@ EOT;
 	
 
 }
-
-
