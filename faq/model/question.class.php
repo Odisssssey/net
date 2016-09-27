@@ -1,5 +1,6 @@
 <?php 
-require_once("./app/config.php");
+//session_start();
+require_once("../app/config.php");
 
 class Question {
 
@@ -58,7 +59,7 @@ class Question {
 	public function sqlBaseCategory($category)
 	{
 		$pdo = connect();
-		$sqlBas=$pdo->prepare('SELECT * FROM question WHERE category=:category');
+		$sqlBas=$pdo->prepare('SELECT * FROM question WHERE category=:category AND ban IS NULL');
 		$sqlBas->bindParam(":category",$category);
 		$sqlBas->execute();
 		return $sqlBas;

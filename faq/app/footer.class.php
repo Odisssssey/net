@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/question.class.php");
+require_once("../model/question.class.php");
 
 
 class Footer {
@@ -18,7 +18,7 @@ class Footer {
 	}
 	
 	public function form(){
-		echo'<form action="./controller/actionLetter.php" method="POST" >';
+		echo'<form action="../controller/actionLetter.php" method="POST" >';
 		$this->polevvoda("Ваше имя", "name");
 		echo'<input type="submit" name="save" value="Добавить" /><br/><br/>';
 		$this->polemail("Ваша почта", "mail");
@@ -28,6 +28,7 @@ class Footer {
 		
 	}
 	
+	///pole vvoda///
 	
 	public function polevvoda($placeholder, $variable){
 		$s = <<<EOT
@@ -48,6 +49,7 @@ EOT;
 		return $_SESSION['text']["{$variable}"]; 
 		}
 	}
+	///select///
 	
 	public function select(){
 		echo "<select name='text[theme]'>";

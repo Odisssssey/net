@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/question.class.php");
+require_once("../model/question.class.php");
 
 class FooterAdminki {
 
@@ -9,7 +9,7 @@ class FooterAdminki {
 	}
 	
 	public function formirovanieFormi(){
-		echo '<form action="./controller/setQuestion.php" method="POST" >';
+		echo '<form action="../controller/setQuestion.php" method="POST" >';
 		$this->vigruzIzbazi();
 		echo '</form>';
 	}
@@ -42,3 +42,7 @@ EOT;
 	
 	
 }
+	
+
+
+

@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/question.class.php");
+require_once("../model/question.class.php");
 
 class Temi {
 
@@ -36,7 +36,7 @@ class Temi {
 			}
 			$fre = $description - $answers;
 			echo "<td>".$fre."</td>";
-			echo "<form action='./controller/setTema.php' method='POST'>";
+			echo "<form action='../controller/setTema.php' method='POST'>";
 			echo "<td><input type=hidden name='category' value='{$tema[0]}'><input type='submit' name='del' value='удалить' ></td>";
 			echo "</form>";
 			echo "</tr>";
@@ -44,3 +44,5 @@ class Temi {
 	}
 
 }
+
+

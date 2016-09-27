@@ -1,5 +1,5 @@
 <?php 
-require_once("./app/config.php");
+require_once("../app/config.php");
 ?>
 
 <?php 
@@ -17,3 +17,7 @@ function delBanWord($id){
 	$sth->execute();
 	return $sth;
 }
+
+
+
+

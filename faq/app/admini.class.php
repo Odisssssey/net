@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/question.class.php");
+require_once("../model/question.class.php");
 
 class Admini {
 
@@ -13,7 +13,7 @@ class Admini {
 	
 	public function topForm(){
 	
-		echo"<form action='./controller/setAdmin.php' method='POST' >";
+		echo"<form action='../controller/setAdmin.php' method='POST' >";
 		$this->poleParola();
 		$this->skritoepole();
 		$this->knopcaParola();
@@ -69,7 +69,7 @@ EOT;
 			echo "<td>".$row[1]."</td>";
 			echo "<td>".$row[2]."</td>";
 			if($row[3] == "1"){ echo "<td>"."да"."</td>"; }else{ echo "<td>"."нет"."</td>";};
-			if($row[3] != "1"){	echo "<td><a href='./controller/setAdmin.php?id={$row[0]}&admin=1'>сделать админом</a></td>"; }else{ echo "<td><a href='./controller/setAdmin.php?id={$row[0]}&admin=0'>разжаловать</a></td>";};
+			if($row[3] != "1"){	echo "<td><a href='../controller/setAdmin.php?id={$row[0]}&admin=1'>сделать админом</a></td>"; }else{ echo "<td><a href='../controller/setAdmin.php?id={$row[0]}&admin=0'>разжаловать</a></td>";};
 			echo "<td><a href='adminka.php?description={$row[2]}&id={$row[0]}'>Изменить пароль</a>";
 			echo "</tr>";
 	}

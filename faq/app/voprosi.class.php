@@ -1,6 +1,6 @@
 <?php 
-require_once("./model/question.class.php");
-require_once("./model/modelForBanHtml.php");
+require_once("../model/question.class.php");
+require_once("../model/modelForBanHtml.php");
 
 class Voprosi {
 
@@ -124,7 +124,7 @@ EOT;
 			echo "<td>"."<input type='submit' name='chengeFooter' value='изменить' /><input type=hidden name='idForFooter' value='{$basePole[0]}'>"."</td>";
 			echo "</form>";
 			
-			echo "<form action='./controller/setQuestion.php' method='POST' >";
+			echo "<form action='../controller/setQuestion.php' method='POST' >";
 			echo "<td>"."<input type='submit' name='delquestion' value='удалить' /><input type=hidden name='id' value='{$basePole[0]}'>"."</td>";
 			if (isset($basePole[3])){	
 				if ($basePole[6] == 0){
@@ -154,3 +154,5 @@ EOT;
 	
 
 }
+
+

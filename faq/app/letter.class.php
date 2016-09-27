@@ -74,7 +74,7 @@ class Letter{
 	
 	public function delQuestion($id){
 		$modificate = new Modificate;
-		$question = $modificatte->delQuestion($id);	
+		$question = $modificate->delQuestion($id);	
 	}
 	
 	

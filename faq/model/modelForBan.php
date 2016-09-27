@@ -24,3 +24,7 @@ function sqlSaveBanWord($description){
 	$sth->execute();
 	return $sth;
 }
+
+
+
+

@@ -1,5 +1,5 @@
 <?php 
-require_once("./model/question.class.php");
+require_once("../model/question.class.php");
 
 
 

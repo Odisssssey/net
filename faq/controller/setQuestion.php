@@ -72,4 +72,4 @@ $text = "[ $d[mday]-$d[mon]-$d[year] $d[hours]:$d[minutes]:$d[seconds] ] ".$_SES
 
 fwrite($file, $text);
 
-header('Location: ../adminka.php');
+header('Location: ../view/adminka.php');
